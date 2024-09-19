@@ -1,0 +1,181 @@
+/* Resetowanie domyślnych stylów przeglądarki */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(145deg, #1c3a5b, #0f0f0f);
+    color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 3em;
+    color: #ecf0f1;
+    text-shadow: 2px 2px 4px #000;
+    text-shadow: 0px 0px 27px 9px rgba(112, 112, 115, 1);
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(10, 50px);
+    grid-template-rows: repeat(10, 50px);
+    gap: 4px;
+    background-color: #34495e;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 5px rgba(112, 112, 115, 1);
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    background-color: #7f8c8d;
+    border: 2px solid #2c3e50;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+.cell:hover {
+    background-color: #95a5a6;
+    transform: scale(1.05);
+}
+
+.cell:active {
+    transform: scale(0.95);
+}
+
+.cell.revealed {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    cursor: default;
+    border: 2px solid #bdc3c7;
+}
+
+.cell.mine.revealed {
+    background-color: #e74c3c;
+    color: #fff;
+    animation: shake 0.5s;
+}
+
+.cell.flag {
+    background-color: #f1c40f;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMu%0D%0Ab3JnLzIwMDAvc3ZnIj4KICA8cG9seWdvbiBwb2ludHM9IjEyIDIgMTEgMjEgMTIgMTIgMTMgMjEgMjIgMjEiLz4KPC9zdmc+');
+    background-size: 60%;
+    background-repeat: no-repeat;
+    box-shadow: 0px 0px 5px 5px #f1c40f;
+    background-position: center;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/* Dodatkowe style dla liczb */
+.cell.revealed:nth-child(1):not(.mine),
+.cell.revealed:nth-child(2):not(.mine),
+.cell.revealed:nth-child(3):not(.mine),
+.cell.revealed:nth-child(4):not(.mine),
+.cell.revealed:nth-child(5):not(.mine),
+.cell.revealed:nth-child(6):not(.mine),
+.cell.revealed:nth-child(7):not(.mine),
+.cell.revealed:nth-child(8):not(.mine),
+.cell.revealed:nth-child(9):not(.mine),
+.cell.revealed:nth-child(10):not(.mine) {
+    /* Placeholder for dynamic numbers */
+}
+
+/* Responsywność */
+@media (max-width: 600px) {
+    #board {
+        grid-template-columns: repeat(10, 30px);
+        grid-template-rows: repeat(10, 30px);
+        gap: 2px;
+    }
+
+    .cell {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8em;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+}
+#status {
+    margin-top: 10px;
+    font-size: 1.5em;
+    color: #e74c3c; /* Czerwony dla przegranej, zielony dla wygranej */
+}
+
+#restart {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0px 0px 27px 9px rgb(0, 0, 0);
+}
+
+#restart:hover {
+    background-color: #2980b9;
+}
+#flag-count {
+    margin-top: 10px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border: 5px solid #3498db;
+    background-color: #3498db; 
+    color: #ffffff; /* Kolor dla licznika flag */
+    
+    
+}
+
+#difficulty {
+    margin-top: 10px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border: 5px solid #3498db;
+    background-color: #3498db; 
+    color: #ffffff; /* Kolor dla licznika flag */
+    margin: 50px;
+    
+    
+}
+label {
+    color: #2980b9;
+    font-family: monospace;
+    font-size: 30px;
+    
+    
+}

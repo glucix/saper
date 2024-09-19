@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saper</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>HARD SAPER</h1>
+    <div id="status"></div>
+    <div id="flag-count">FLAGS: 0 / 40</div>
+    <div>
+        <label for="difficulty" class="Wybierz">SELECT DIFFICULTY LEVEL:</label>
+        <select id="difficulty">
+            <option value="easy">EASY</option>
+            <option value="medium">MEDIUM</option>
+            <option value="hard">HARD</option>
+            <option value="fabian">FINALBOSS</option>
+        </select>
+    </div>
+    <div id="board"></div>
+    <button id="restart" onclick="restartGame()">Restart</button>
+    <script src="script.js"></script>
+</body>
+</html>
